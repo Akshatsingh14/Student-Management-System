@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        .imghead {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(218, 147, 77);
+        }
+
+        .banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .imghead h1 {
+            font-weight: bolder;
+            font-size: 5rem;
+        }
+
+        .std {
+            text-align: center;
+        }
+        
+        .std h1 {
+            font-weight: bolder;
+            font-size: 3rem;
+        }
+
+        .card {
+            width: 320px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #9d4caf;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qualification {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .card-body {
+            padding: 20px;
+            height: 120px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-6 {
+            flex-basis: 48%;
+        }
+
+        .card-footer {
+            background-color: #9d4caf;
+            color: #fff;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            /* border: 2px solid; */
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tags button {
+            height: 3rem;
+            width: 10rem;
+            background-color: rgb(155, 42, 165);
+            border-radius: 5px;
+            font-weight: bolder;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="imghead">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <h1>Welcome to QSPIDERS !!</h1>
+    </div>
+    <div class="std">
+        <h1 align="center">Student Records</h1>
+    </div>
+    <div class="tags">
+        <a href="{% url 'index' %}"><button>All</button></a>
+        <a href="{% url 'pyspiders' %}"><button>Pyspiders</button></a>
+        <a href="{% url 'jspiders' %}"><button>Jspiders</button></a>
+        <a href="{% url 'qspiders' %}"><button>Qspiders</button></a>
+        <a href="{% url 'prospiders' %}"><button>Prospiders</button></a>
+    </div>
+    <div class="banner">
+        {% for i in student %}
+        {% if i.Department == "QSPIDERS" %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="name">{{i.Name}}</h2>
+                <p class="qualification">{{i.Qualification}}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <p><strong>Age:</strong> {{i.Age}}</p>
+                    <p><strong>Address:</strong> {{i.Address}}</p>
+                    <p><strong>DOB:</strong> {{i.DOB}}</p>
+                  </div>
+                  <div class="col-6">
+                    <p><strong>YOP:</strong> {{i.YOP}}</p>
+                    <p><strong>Skills:</strong> {{i.Skills}}</p>
+                    <p><strong>Gender:</strong> {{i.Gender}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><strong>DEPARTMENT:</strong> {{i.Department}}</p>
+            </div>
+        </div>    
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

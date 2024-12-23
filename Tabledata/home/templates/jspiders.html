@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        .imghead {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(218, 147, 77);
+        }
+
+        .banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .imghead h1 {
+            font-weight: bolder;
+            font-size: 5rem;
+        }
+
+        .std {
+            text-align: center;
+        }
+        
+        .std h1 {
+            font-weight: bolder;
+            font-size: 3rem;
+        }
+
+        .card {
+            width: 320px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #4c91af;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qualification {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .card-body {
+            padding: 20px;
+            height: 120px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-6 {
+            flex-basis: 48%;
+        }
+
+        .card-footer {
+            background-color: #4c91af;
+            color: #fff;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            /* border: 2px solid; */
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tags button {
+            height: 3rem;
+            width: 10rem;
+            background-color: rgb(42, 122, 165);
+            border-radius: 5px;
+            font-weight: bolder;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="imghead">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <h1>Welcome to JSPIDERS !!</h1>
+    </div>
+    <div class="std">
+        <h1 align="center">Student Records</h1>
+    </div>
+    <div class="tags">
+        <a href="{% url 'index' %}"><button>All</button></a>
+        <a href="{% url 'pyspiders' %}"><button>Pyspiders</button></a>
+        <a href="{% url 'jspiders' %}"><button>Jspiders</button></a>
+        <a href="{% url 'qspiders' %}"><button>Qspiders</button></a>
+        <a href="{% url 'prospiders' %}"><button>Prospiders</button></a>
+    </div>
+    <div class="banner">
+        {% for i in student %}
+        {% if i.Department == "JSPIDERS" %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="name">{{i.Name}}</h2>
+                <p class="qualification">{{i.Qualification}}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <p><strong>Age:</strong> {{i.Age}}</p>
+                    <p><strong>Address:</strong> {{i.Address}}</p>
+                    <p><strong>DOB:</strong> {{i.DOB}}</p>
+                  </div>
+                  <div class="col-6">
+                    <p><strong>YOP:</strong> {{i.YOP}}</p>
+                    <p><strong>Skills:</strong> {{i.Skills}}</p>
+                    <p><strong>Gender:</strong> {{i.Gender}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><strong>DEPARTMENT:</strong> {{i.Department}}</p>
+            </div>
+        </div>    
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

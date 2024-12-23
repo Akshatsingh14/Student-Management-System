@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        .imghead {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(218, 147, 77);
+        }
+
+        .banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .imghead h1 {
+            font-weight: bolder;
+            font-size: 5rem;
+        }
+
+        .std {
+            text-align: center;
+        }
+        
+        .std h1 {
+            font-weight: bolder;
+            font-size: 3rem;
+        }
+
+        .card {
+            width: 320px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qualification {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .card-body {
+            padding: 20px;
+            height: 120px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-6 {
+            flex-basis: 48%;
+        }
+
+        .card-footer {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            /* border: 2px solid; */
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tags button {
+            height: 3rem;
+            width: 10rem;
+            background-color: rgb(69, 165, 42);
+            border-radius: 5px;
+            font-weight: bolder;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="imghead">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <h1>Welcome to PYSPIDERS !!</h1>
+    </div>
+    <div class="std">
+        <h1 align="center">Student Records</h1>
+    </div>
+    <div class="tags">
+        <a href="{% url 'index' %}"><button>All</button></a>
+        <a href="{% url 'pyspiders' %}"><button>Pyspiders</button></a>
+        <a href="{% url 'jspiders' %}"><button>Jspiders</button></a>
+        <a href="{% url 'qspiders' %}"><button>Qspiders</button></a>
+        <a href="{% url 'prospiders' %}"><button>Prospiders</button></a>
+    </div>
+    <div class="banner">
+        {% for i in student %}
+        {% if i.Department == "PYSPIDERS" %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="name">{{i.Name}}</h2>
+                <p class="qualification">{{i.Qualification}}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <p><strong>Age:</strong> {{i.Age}}</p>
+                    <p><strong>Address:</strong> {{i.Address}}</p>
+                    <p><strong>DOB:</strong> {{i.DOB}}</p>
+                  </div>
+                  <div class="col-6">
+                    <p><strong>YOP:</strong> {{i.YOP}}</p>
+                    <p><strong>Skills:</strong> {{i.Skills}}</p>
+                    <p><strong>Gender:</strong> {{i.Gender}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><strong>DEPARTMENT:</strong> {{i.Department}}</p>
+            </div>
+        </div>    
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>

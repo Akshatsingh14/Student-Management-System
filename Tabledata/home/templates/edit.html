@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form</title>
+<style>
+    @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,100,500);
+body,
+html {
+  margin: 0;
+  height: 100%;
+  font-family: roboto;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+  font-weight: 300;
+}
+
+input {
+  border: none;
+}
+
+header {
+  width: 100%;
+}
+
+.nav {
+  height: 60px;
+  /* background: linear-gradient(#b971c6, #3c9bc4); */
+  background: radial-gradient(#b971c6, #3c9bc4);
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav p {
+  display: block;
+  color: white;
+  font-size: 1.88rem;
+  text-align: center;
+}
+
+section {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  font-family: roboto;
+}
+
+.card {
+  color: white;
+  background: linear-gradient(#b971c6, #3c9bc4);
+  width: 29%;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.heading {
+  display: inline-block; 
+  margin-top: 25px; 
+  text-align: center; 
+}
+
+.sup {
+  font-family: roboto;
+  font-size: 2.2rem;
+  font-weight: 300;
+  text-align: center;
+  letter-spacing: 0px;
+  letter-spacing: 0.05rem;
+}
+
+.fields {
+  display: flex;
+  justify-content: center; 
+  align-items: flex-start; 
+  height: auto; 
+  width: 100%;
+  margin-bottom: 10px; 
+}
+
+.input-fields {
+  width: 80%;
+  height: auto; 
+  padding-bottom: 10px; 
+}
+
+.input-line {
+  background: none;
+  margin-bottom: 10px;
+  line-height: 2.5em;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.65);
+  width: 100%;
+  color: white;
+}
+
+.input-line::placeholder {
+  color: rgba(227, 227, 227, 0.752);
+  opacity: 1; 
+}
+
+.fields + div {
+  margin-top: 0; 
+  padding-top: 5px; 
+}
+
+.ghost-round {
+  cursor: pointer;
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 25px;
+  color: white;
+  font-size: 19px;
+  font-size: 1.2rem;
+  font-family: roboto;
+  font-weight: 300;
+  line-height: 2.5em;
+  width: 120px;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+.ghost-round:hover {
+  background: rgba(255, 255, 255, 0.163);
+  color: #fff;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+
+</style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <p>Form</p>
+        </div>
+    </header>
+    <section>
+        <div class="card">
+            <div class="heading">
+                <p class="sup">Hello There!</p>
+            </div>
+            <div class="fields">
+                <div class="input-fields">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                    <input type='text' placeholder='First name' class='input-line full-width' name="Name" value="{{data1.Name}}"></input>
+                    <input type='text' placeholder='Qualification' class='input-line full-width' name="Qualification" value="{{data1.Qualification}}"></input>
+                    <input type='text' placeholder='Gender' class='input-line full-width' name="Gender" value="{{data1.Gender}}"></input>
+                    <input type='number' placeholder='Year Of Passout' class='input-line full-width' name="YOP" value="{{data1.YOP}}"></input>
+                    <input type='number' placeholder='Age' class='input-line full-width' name="Age" value="{{data1.Age}}"></input>
+                    <input type='text' placeholder='Skills' class='input-line full-width' name="Skills" value="{{data1.Skills}}"></input>
+                    <input type='text' placeholder='Address' class='input-line full-width' name="Address" value="{{data1.Address}}"></input>
+                    <input type="text" placeholder='Mock Rating' class='input-line full-width' name="Mock_Rating" value="{{data1.Mock_Rating}}"></input>
+                    <input type='text' placeholder='Department' class='input-line full-width' name="Department" value="{{data1.Department}}"></input>
+                </div>
+            </div>
+            <div><button class='ghost-round full-width'>Update</button></div>
+        </div>
+    </form>
+    </section>
+</body>
+</html>

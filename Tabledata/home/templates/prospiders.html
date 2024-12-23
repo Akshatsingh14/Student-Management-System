@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Details</title>
+    <style>
+        .imghead {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-align: center;
+            background-color: rgb(218, 147, 77);
+        }
+
+        .banner {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            padding: 20px;
+            gap: 20px;
+        }
+
+        .imghead h1 {
+            font-weight: bolder;
+            font-size: 5rem;
+        }
+
+        .std {
+            text-align: center;
+        }
+        
+        .std h1 {
+            font-weight: bolder;
+            font-size: 3rem;
+        }
+
+        .card {
+            width: 320px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #f9f9f9;
+            overflow: hidden;
+        }
+
+        .card-header {
+            background-color: #af8e4c;
+            color: #fff;
+            padding: 10px;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .qualification {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        .card-body {
+            padding: 20px;
+            height: 120px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .col-6 {
+            flex-basis: 48%;
+        }
+
+        .card-footer {
+            background-color: #af8e4c;
+            color: #fff;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            text-align: center;
+        }
+
+        strong {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .tags {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            /* border: 2px solid; */
+            margin-bottom: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tags button {
+            height: 3rem;
+            width: 10rem;
+            background-color: brown;
+            border-radius: 5px;
+            font-weight: bolder;
+            color: white;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="imghead">
+        <img src="data:image/jpeg;base64,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" alt="">
+        <h1>Welcome to PROSPIDERS !!</h1>
+    </div>
+    <div class="std">
+        <h1 align="center">Student Records</h1>
+    </div>
+    <div class="tags">
+        <a href="{% url 'index' %}"><button>All</button></a>
+        <a href="{% url 'pyspiders' %}"><button>Pyspiders</button></a>
+        <a href="{% url 'jspiders' %}"><button>Jspiders</button></a>
+        <a href="{% url 'qspiders' %}"><button>Qspiders</button></a>
+        <a href="{% url 'prospiders' %}"><button>Prospiders</button></a>
+    </div>
+    <div class="banner">
+        {% for i in student %}
+        {% if i.Department == "PROSPIDERS" %}
+        <div class="card">
+            <div class="card-header">
+                <h2 class="name">{{i.Name}}</h2>
+                <p class="qualification">{{i.Qualification}}</p>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                  <div class="col-6">
+                    <p><strong>Age:</strong> {{i.Age}}</p>
+                    <p><strong>Address:</strong> {{i.Address}}</p>
+                    <p><strong>DOB:</strong> {{i.DOB}}</p>
+                  </div>
+                  <div class="col-6">
+                    <p><strong>YOP:</strong> {{i.YOP}}</p>
+                    <p><strong>Skills:</strong> {{i.Skills}}</p>
+                    <p><strong>Gender:</strong> {{i.Gender}}</p>
+                  </div>
+                </div>
+            </div>
+            <div class="card-footer">
+                <p><strong>DEPARTMENT:</strong> {{i.Department}}</p>
+            </div>
+        </div>    
+        {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html>
